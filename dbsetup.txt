@@ -1,0 +1,21 @@
+create database angular7crud
+create table users( id int not null auto_increment, firstname varchar(20), lastname varchar(20), address varchar(100), city varchar(20), state varchar(20), order_total float, primary key(id));
+use angular7crud
+INSERT INTO `users` (`id`, `firstname`, `lastname`, `address`, `city`, `state`, `order_total`) VALUES ('11', 'Bhavana', 'Admin', '48-501', 'hyderabad', 'telangana', '55.09');
+
+or
+
+import angular7crud.sql in phpmyadmin
+
+
+****************api server connect***************get details of data exists in api server/backend db values
+ C:\xampp\htdocs> php -S 127.0.0.1:9999 -t ./angular-april19-repo/backend
+*************** angular 7 app execution ******************************
+PS C:\xampp\htdocs\angular-april19-repo> ng serve --port 8888
+
+*****api works on below host in browser****
+http://127.0.0.1:9999/api/read.php
+
+***user crud works on below host in browser****
+http://127.0.0.1:8888/dashboard
+
