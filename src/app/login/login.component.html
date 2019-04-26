@@ -1,7 +1,15 @@
-<!-- <p>
-  login works!
-</p> -->
-<br>
-<div>
-<h3>User logged in to angular demo!!!</h3><br>
-<div>
+  <form name="frmRegistration" method="post" action=""  #f = "ngForm">
+    <table border="0" width="500" align="center" class="demo-table">
+        <tr>
+            <td>User Name</td>
+            <td><input type="text" class="demoInputBox" name="username" [(ngModel)] = "login.username"></td>
+        </tr>
+        <tr>
+            <td>Password</td>
+            <td><input type="password" class="demoInputBox" name="password" [(ngModel)] = "login.password"></td>
+        </tr>
+        <tr>
+            <td> <input type="button" (click)="user_login(f)" value="Login"></td>
+        </tr>
+    </table>
+</form>

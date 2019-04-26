@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 //import http client
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 //Defining the CRUD Methods
 import { User_details } from  './user_details';
 //define order details
@@ -13,12 +13,14 @@ import { Observable } from  'rxjs';
 @Injectable({
   providedIn: 'root'
 })
+
 export class ApiService {
   //define the PHP_API_SERVER variable in the service
   PHP_API_SERVER = "http://127.0.0.1:9999";//http://localhost/phpmyadmin/sql.php?db=myng7db&table=users&pos=0
   //define http client in provider to get access to service
   constructor(private httpClient: HttpClient) { }
     //add the readUser_details() method that will be used to retrieve the users from the REST API endpoint via a GET request
+
   readUser_details(): Observable<User_details[]>{
     return this.httpClient.get<User_details[]>(`${this.PHP_API_SERVER}/api/read.php`);
   }
@@ -83,6 +85,11 @@ export class ApiService {
   //update user roles details in db
   updateUser_roles(role_id: number){
     return this.httpClient.get<User_roles>(`${this.PHP_API_SERVER}/api/user_role_update.php/?role_id=${role_id}`);  
+  }
+
+  //Login
+  user_detailsLogin(user_details: User_details): Observable<User_details>{
+    return this.httpClient.post<User_details>(`${this.PHP_API_SERVER}/api/login.php`, user_details);
   }
 
 }

@@ -17,3 +17,7 @@ export interface Register {
     city:  string;
     state:  string;
 }
+export interface Login {
+    username: string;
+    password: string;
+}

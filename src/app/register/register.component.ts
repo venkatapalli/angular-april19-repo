@@ -17,14 +17,11 @@ export class RegisterComponent implements OnInit {
 	selectedUser_details:  Register  = { id :  null , firstname:null, lastname:null, address:null, city:null, state:null, username: null, password: null};
 
   ngOnInit() {
-    this.apiService.readUser_details().subscribe((user_details: Register[])=>{
-    console.log(user_details);
-    })
-    
+
   } 
   createOrUpdateUser_details(form){
-      this.apiService.createUser(form.value).subscribe((user_details: Register)=>{
-        console.log("User Details created, ", user_details);
+      this.apiService.createUser(form.value).subscribe(res=>{
+        //console.log("User Details created, ", user_details);
         location.reload(true);
       });
   }
