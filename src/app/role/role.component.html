@@ -1,0 +1,37 @@
+<!-- <p>
+  role works!
+</p> -->
+<br>
+<h3><span class="glyphicon glyphicon-user"></span>&nbsp;Roles</h3><br>
+<div>
+    <table border='1' width='100%' style='border-collapse: collapse;'>
+        <tr>
+          <th></th>
+          <th>User Role</th>
+          <!-- <th>User Name</th> -->
+          <th>Action</th>
+          </tr>
+          <tr *ngFor="let user_roles of user_roles">
+              <td><a href="#"><span class="glyphicon glyphicon-user user"></span></a></td>
+              <td>{{ user_roles.role_name }}</td>
+              <!-- <td>{{ user_roles.role_id }}</td> -->
+              <!-- <td>{{ user_roles.firstname }}&nbsp;{{ user_roles.lastname }}</td> -->
+              <td>
+                 <button *ngIf="user_roles.role_id == 1 || user_roles.role_id == 2" (click)="deleteUser_roles(user_roles.role_id)" class="btn btn-danger" disabled>Delete</button>
+                <button  *ngIf="user_roles.role_id != 1 && user_roles.role_id != 2" (click)="deleteUser_roles(user_roles.role_id)" class="btn btn-danger">Delete</button>
+              </td>
+            </tr>
+        </table>
+          <br>
+          <form *ngFor="let user_roles of user_roles" style="display: none">
+              <label>User Role</label>
+              <input type="text" name="userrole" value="{{ user_roles.userrole }}"> 
+            <br>
+            </form>
+          <br>
+          <form #f = "ngForm">
+            <label>User Role</label>
+            <input type="text" name="userrole" [(ngModel)] = "selectUser_roles.userrole">
+            <br><br>
+            <input type="button" class="submit btn btn-primary" (click)="createOrUpdateUser_roles(f)" value="Add New User Role">
+          </form>

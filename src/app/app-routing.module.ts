@@ -7,11 +7,17 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 //include home component
 import { HomeComponent } from './home/home.component';
 import { RegisterComponent } from './register/register.component';
+//include role component
+import { RoleComponent } from './role/role.component'
 
 const routes: Routes = [
   {
     path: 'home',
     component: HomeComponent
+  },
+  {
+    path: 'roles',
+    component: RoleComponent
   },
   {
     path: 'order',

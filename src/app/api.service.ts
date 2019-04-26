@@ -6,6 +6,8 @@ import { User_details } from  './user_details';
 //define order details
 import { Order_details } from  './order_details';
 import { OrderComponent } from './order/order.component';
+//define user roles
+import { User_roles } from './user_roles';
 
 import { Observable } from  'rxjs';
 @Injectable({
@@ -62,6 +64,25 @@ export class ApiService {
   }
   selectUser(user_details: User_details): Observable<User_details>{
     return this.httpClient.post<User_details>(`${this.PHP_API_SERVER}/api/register.php`, user_details);
+  }
+
+  //read user roles from db
+  readUser_roles(): Observable<User_roles[]>{
+    return this.httpClient.get<User_roles[]>(`${this.PHP_API_SERVER}/api/user_role_read.php`);
+  }
+  //insert user roles into db
+  createUser_roles(user_roles: User_roles): Observable<User_roles>{
+    //console.log(user_roles);
+    return this.httpClient.post<User_roles>(`${this.PHP_API_SERVER}/api/user_role_create.php`, user_roles);
+  }
+  //delete user roles into db
+  deleteUser_roles(role_id: number){
+    //console.log(role_id);
+    return this.httpClient.delete<User_roles>(`${this.PHP_API_SERVER}/api/user_role_delete.php/?role_id=${role_id}`);
+  }
+  //update user roles details in db
+  updateUser_roles(role_id: number){
+    return this.httpClient.get<User_roles>(`${this.PHP_API_SERVER}/api/user_role_update.php/?role_id=${role_id}`);  
   }
 
 }
