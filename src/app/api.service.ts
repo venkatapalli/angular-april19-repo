@@ -52,4 +52,13 @@ export class ApiService {
   updateOrder_details(order_id: number){
     return this.httpClient.get<Order_details>(`${this.PHP_API_SERVER}/api/order_update.php/?order_id=${order_id}`);  
   }
+
+  //Register 
+   createUser(user_details: User_details): Observable<User_details>{
+    return this.httpClient.post<User_details>(`${this.PHP_API_SERVER}/api/register.php`, user_details);
+  }
+  selectUser(user_details: User_details): Observable<User_details>{
+    return this.httpClient.post<User_details>(`${this.PHP_API_SERVER}/api/register.php`, user_details);
+  }
+
 }

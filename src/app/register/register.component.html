@@ -1,0 +1,38 @@
+<h1>Register</h1>
+  <form name="frmRegistration" method="post" action=""  #f = "ngForm">
+	<table border="0" width="500" align="center" class="demo-table">
+		<tr>
+			<td>User Name</td>
+			<td><input type="text" class="demoInputBox" name="username" [(ngModel)] = "selectUser.username"></td>
+		</tr>
+
+		<tr>
+			<td>First Name</td>
+			<td><input type="text" class="demoInputBox" name="firstname" [(ngModel)] = "selectUser.firstname"></td>
+		</tr>
+		<tr>
+			<td>Last Name</td>
+			<td><input type="text" class="demoInputBox" name="lastname" [(ngModel)] = "selectUser.lastname"></td>
+		</tr>
+		<tr>
+			<td>Password</td>
+			<td><input type="password" class="demoInputBox" name="password" [(ngModel)] = "selectUser.password"></td>
+		</tr>
+		<tr>
+			<td>Address</td>
+			<td><input type="text" class="demoInputBox" name="address" [(ngModel)] = "selectUser.address"></td>
+		</tr>
+		<tr>
+			<td>City</td> 
+           <td><input type="text" name="city" class="demoInputBox" [(ngModel)] = "selectUser.city"></td> 
+		</tr>
+		<tr>
+			<td>State</td>
+    		<td><input type="text" name="state" class="demoInputBox" [(ngModel)] = "selectUser.state"></td>
+		</tr>
+		<tr>
+			<td> <input type="button" (click)="createOrUpdateUser_details(f)" value="Create Customer"></td>
+		</tr>
+	</table>
+</form>
+ 

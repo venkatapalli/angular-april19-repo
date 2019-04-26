@@ -7,3 +7,13 @@ export  class  User_details {
     state:  string;
     order_total:  number;
 }
+export interface Register {
+    id: number;
+    firstname:  string;
+    lastname:  string;
+    username: string;
+    password: string;
+    address:  string;
+    city:  string;
+    state:  string;
+}
