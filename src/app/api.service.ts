@@ -5,6 +5,7 @@ import { HttpClient } from '@angular/common/http';
 import { User_details } from  './user_details';
 //define order details
 import { Order_details } from  './order_details';
+import { OrderComponent } from './order/order.component';
 
 import { Observable } from  'rxjs';
 @Injectable({
@@ -42,6 +43,8 @@ export class ApiService {
   }
   //insert order into db
   createOrder_details(order_details: Order_details): Observable<Order_details>{
+    //console.log(order_details);
+    //console.log(OrderComponent);
     return this.httpClient.post<Order_details>(`${this.PHP_API_SERVER}/api/order_create.php`, order_details);
   }
   //delete orders into db

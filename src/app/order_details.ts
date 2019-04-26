@@ -3,4 +3,5 @@ export  class  Order_details {
     product_name:  string;
     order_total:  number;
     customer_id: number;
+    firstname: string;
 }

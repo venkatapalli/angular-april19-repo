@@ -26,10 +26,11 @@ if(isset($postdata) && !empty($postdata))
   $city = mysqli_real_escape_string($con, trim($request->city));
   $state = mysqli_real_escape_string($con, trim($request->state));
   // $order_total = mysqli_real_escape_string($con, 0);//(int)$request->order_total
-
+  $order_total = 0;
+  $role_id = 2;
 
   // Create.
-  $sql = "INSERT INTO `users`(`firstname`, `lastname`, `address`, `city`, `state`,`username`,`password`) VALUES ('{$firstname}','{$lastname}','{$address}','{$city}','{$state}','{$username}','{$password}')";
+  $sql = "INSERT INTO `users`(`firstname`, `lastname`, `address`, `city`, `state`,`order_total`,`username`,`password`,`role_id`) VALUES ('{$firstname}','{$lastname}','{$address}','{$city}','{$state}','{$order_total}','{$username}','{$password}','{$role_id}')";
   // print_r($sql);
   if(mysqli_query($con,$sql))
   {
@@ -38,11 +39,11 @@ if(isset($postdata) && !empty($postdata))
     $user_details = [
       'firstname' => $firstname,
       'lastname' => $lastname,
-      
       'address' => $address,
       'city' => $city,
       'state' => $state,
       'order_total' => 0,
+      'role_id' => 2,
       'id'    => mysqli_insert_id($con)
     ];
     echo json_encode($user_details);

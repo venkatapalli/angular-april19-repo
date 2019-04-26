@@ -23,10 +23,10 @@ if(isset($postdata) && !empty($postdata))
   $city = mysqli_real_escape_string($con, trim($request->city));
   $state = mysqli_real_escape_string($con, trim($request->state));
   $order_total = mysqli_real_escape_string($con, $request->order_total);//(int)$request->order_total
-
+  $role_id = 2;
 
   // Create.
-  $sql = "INSERT INTO `users`(`id`,`firstname`, `lastname`, `address`, `city`, `state`,`order_total`) VALUES (null,'{$firstname}','{$lastname}','{$address}','{$city}','{$state}','{$order_total}')";
+  $sql = "INSERT INTO `users`(`id`,`firstname`, `lastname`, `address`, `city`, `state`,`order_total`,`role_id`) VALUES (null,'{$firstname}','{$lastname}','{$address}','{$city}','{$state}','{$order_total}',2)";
 
   if(mysqli_query($con,$sql))
   {

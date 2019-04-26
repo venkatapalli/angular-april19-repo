@@ -5,7 +5,7 @@
 require 'database.php';
 
 $users = [];
-$sql = "SELECT id, firstname, lastname, address, city, state,order_total FROM users";
+$sql = "SELECT users.id, users.firstname, users.lastname, users.address, users.city, users.state,users.order_total,roles.role_name FROM users INNER JOIN roles ON users.role_id=roles.role_id";
 
 if($result = mysqli_query($con,$sql))
 {
@@ -19,6 +19,7 @@ if($result = mysqli_query($con,$sql))
     $users[$i]['city'] = $row['city'];
     $users[$i]['state'] = $row['state'];
     $users[$i]['order_total'] = $row['order_total'];
+    $users[$i]['role_name'] = $row['role_name'];
     $i++;
   }
 
