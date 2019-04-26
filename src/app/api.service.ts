@@ -3,6 +3,9 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 //Defining the CRUD Methods
 import { User_details } from  './user_details';
+//define order details
+import { Order_details } from  './order_details';
+
 import { Observable } from  'rxjs';
 @Injectable({
   providedIn: 'root'
@@ -31,5 +34,22 @@ export class ApiService {
     //add the deleteUser_details() to delete policies from the SQL database:
   deleteUser_details(id: number){
     return this.httpClient.delete<User_details>(`${this.PHP_API_SERVER}/api/delete.php/?id=${id}`);
+  }
+
+  //read order details from db
+  readOrder_details(): Observable<Order_details[]>{
+    return this.httpClient.get<Order_details[]>(`${this.PHP_API_SERVER}/api/order_read.php`);
+  }
+  //insert order into db
+  createOrder_details(order_details: Order_details): Observable<Order_details>{
+    return this.httpClient.post<Order_details>(`${this.PHP_API_SERVER}/api/order_create.php`, order_details);
+  }
+  //delete orders into db
+  deleteOrder_details(order_id: number){
+    return this.httpClient.delete<Order_details>(`${this.PHP_API_SERVER}/api/order_delete.php/?order_id=${order_id}`);
+  }
+  //update order details in db
+  updateOrder_details(order_id: number){
+    return this.httpClient.get<Order_details>(`${this.PHP_API_SERVER}/api/order_update.php/?order_id=${order_id}`);  
   }
 }

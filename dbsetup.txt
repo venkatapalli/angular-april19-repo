@@ -13,9 +13,15 @@ import angular7crud.sql in phpmyadmin
 *************** angular 7 app execution ******************************
 PS C:\xampp\htdocs\angular-april19-repo> ng serve --port 8888
 
-*****api works on below host in browser****
+*****api works on below host in browser for user_details get data****
 http://127.0.0.1:9999/api/read.php
 
-***user crud works on below host in browser****
+***user crud works on below host in browser for user_details in dashboard****
 http://127.0.0.1:8888/dashboard
+
+*****api works on below host in browser for order_details get data****
+http://127.0.0.1:9999/api/order_read.php
+
+***order crud works on below host in browser for order_details in order page****
+http://127.0.0.1:8888/order
 
