@@ -1,22 +1,24 @@
 <!-- <p>
   order works!!!
 </p> -->
-<h1>Order Details</h1>
+<h3><span class="glyphicon glyphicon-shopping-cart"></span>&nbsp;Orders</h3>
 <table border='1' width='100%' style='border-collapse: collapse;'>
   <tr>
-    <th>Order ID</th>
+    <!-- <th>Order ID</th> -->
+    <th></th>
     <th>Product Name</th>
     <th>Order Total</th>
     <th>Customer ID</th>
     <th>Action</th>
   </tr>
   <tr *ngFor="let order_details of order_details">
-    <td>{{ order_details.order_id}}</td>
+    <td><a href="#"><span class="glyphicon glyphicon-shopping-cart user"></span></a></td>
+    <!-- <td>{{ order_details.order_id}}</td> -->
     <td>{{ order_details.product_name }}</td>
     <td>{{ order_details.order_total }}</td>
     <td>{{ order_details.customer_id }}</td>
     <td>
-      <button (click)="deleteOrder_details(order_details.order_id)">Delete</button>
+      <button (click)="deleteOrder_details(order_details.order_id)" class="btn btn-danger">Delete</button>
       </td></tr>
   </table>
   <br>
@@ -30,6 +32,6 @@
     <br>
     <label>Customer ID</label>
     <input type="text" name="customer_id" [(ngModel)] = "selectedOrder_details.customer_id">
-    <br>
-    <input type="button" (click)="createOrUpdateOrder_details(f)" value="Create Order">
+    <br><br>
+    <input type="button" class="submit btn btn-primary" (click)="createOrUpdateOrder_details(f)" value="Add New Order">
   </form>
