@@ -6,6 +6,7 @@ export  class  User_details {
     city:  string;
     state:  string;
     order_total:  number;
+    length: number;
 }
 export interface Register {
     id: number;

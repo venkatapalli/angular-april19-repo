@@ -21,7 +21,7 @@ export class DashboardComponent implements OnInit {
   constructor(private apiService: ApiService, private router: Router) { }
 //define users
 user_details:  User_details[];
-selectedUser_details:  User_details  = { id :  null , firstname:null, lastname:null, address:null, city:null, state:null, order_total:  null};
+selectedUser_details:  User_details  = { id :  null , firstname:null, lastname:null, address:null, city:null, state:null, order_total:  null,length: null};
   
 public show:boolean = false;
 public viewuser:any = 'View';  

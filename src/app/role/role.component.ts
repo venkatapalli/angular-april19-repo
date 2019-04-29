@@ -14,7 +14,7 @@ export class RoleComponent implements OnInit {
 constructor(private apiService: ApiService) { }
 //define users roles
 user_roles:  User_roles[];
-selectedUser_roles:  User_roles  = { role_id :  null , role_name:null, customer_id:null};
+selectedUser_roles:  User_roles  = { role_id :  null , role_name:null, customer_id:null,firstname:null};
   ngOnInit() {
     this.apiService.readUser_roles().subscribe((user_roles: User_roles[])=>{
       this.user_roles = user_roles;

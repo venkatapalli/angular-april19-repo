@@ -24,7 +24,7 @@ export class LoginComponent implements OnInit {
  console.log(form.value);
       this.apiService.user_detailsLogin(form.value).subscribe(res=>{
       console.log("User Details", res.length);
-        if(res != 0)
+        if(res.length != 0)
         {
           console.log("User Existed");
           this.router.navigate(['dashboard']);
@@ -40,7 +40,7 @@ export class LoginComponent implements OnInit {
 
   login(user_details: Login){
     this.selectedUser_details = user_details;
-    console.log("User Details created, ", res);
+    console.log("User Details created, ", user_details);
   }
 
 }
