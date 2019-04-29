@@ -4,7 +4,13 @@ import{ ApiService } from '../api.service';
 import { User_details } from '../user_details';
 import { Subscriber } from 'rxjs';
 import { HttpClientModule } from '@angular/common/http';
+import { Routes, Router, RouterModule, ActivatedRoute, ParamMap } from '@angular/router';
+//import {Observable} from 'rxjs/Observable';
+import { switchMap } from 'rxjs/operators';
 
+// import 'rxjs/add/operator/map';
+// import 'rxjs/add/operator/switchMap';
+// import 'rxjs/add/observable/of';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -12,14 +18,24 @@ import { HttpClientModule } from '@angular/common/http';
 })
 export class DashboardComponent implements OnInit {
 //import APIService
-  constructor(private apiService: ApiService) { }
+  constructor(private apiService: ApiService, private router: Router) { }
 //define users
 user_details:  User_details[];
 selectedUser_details:  User_details  = { id :  null , firstname:null, lastname:null, address:null, city:null, state:null, order_total:  null};
-  ngOnInit() {
+  
+public show:boolean = false;
+public viewuser:any = 'View';  
+ngOnInit() {
     
     this.apiService.readUser_details().subscribe((user_details: User_details[])=>{
       this.user_details = user_details;
+      //user details view on id based using switch map -- parammap for route type issue
+      /*this.user_details = this.router.paramMap.pipe(
+        switchMap(params => {
+          const id = +params.get("id")
+          return this.apiService.viewUser_details(id) // http request
+        })
+      )*/
       // user_details.forEach(element => {
        
       //   element.id = element.id;
@@ -62,6 +78,21 @@ selectedUser_details:  User_details  = { id :  null , firstname:null, lastname:n
       console.log("User Details deleted, ", user_details);
       location.reload(true);
     });
+  }
+  //view user details
+  viewUser_details(id){
+      this.show = !this.show;
+      console.log(id);
+      if(!this.show)  
+      this.apiService.viewUser_details(id).subscribe((user_details: User_details)=>{
+        this.selectedUser_details = user_details;
+        console.log("User Details , ", user_details);
+        this.viewuser = "View";
+      //location.reload(true);
+    });
+    //this.router.navigate(['dashboard', id]);
+      else
+      this.viewuser = "Hide";
   }
   updateUser_details(id){
     console.log(id);

@@ -41,6 +41,11 @@ export class ApiService {
     return this.httpClient.delete<User_details>(`${this.PHP_API_SERVER}/api/delete.php/?id=${id}`);
   }
 
+  //view user details
+  viewUser_details(id: number){
+   // console.log(id);
+    return this.httpClient.get<User_details>(`${this.PHP_API_SERVER}/api/view_user.php/?id=${id}`);
+  }
   //read order details from db
   readOrder_details(): Observable<Order_details[]>{
     return this.httpClient.get<Order_details[]>(`${this.PHP_API_SERVER}/api/order_read.php`);

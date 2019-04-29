@@ -36,6 +36,10 @@ const routes: Routes = [
   component: DashboardComponent 
   },
   { 
+    path: 'dashboard/:id',
+    component: DashboardComponent 
+    },
+  { 
   path: 'register', 
   component: RegisterComponent 
   }

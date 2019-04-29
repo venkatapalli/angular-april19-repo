@@ -28,16 +28,51 @@
       <td>{{ user_details.order_total }}</td>
       <td>{{ user_details.role_name }}</td>
       <td>
-        <button (click)="deleteUser_details(user_details.id)" class="btn btn-danger">Delete</button>
+        <button *ngIf="user_details.id == 1 || user_details.id == 2" (click)="deleteUser_details(user_details.id)" class="btn btn-danger" disabled>Delete</button>
+        <button *ngIf="user_details.id != 1 && user_details.id != 2" (click)="deleteUser_details(user_details.id)" class="btn btn-danger">Delete</button>
+        <button (click)="viewUser_details(user_details.id)" class="glyphicon glyphicon-eye-open ">{{viewuser}}</button>
         <!-- <button (click)="selectUser_details(user_details)">Update</button> -->
-
          <!-- user update commented-->
         <!-- <button (click)="updateUser_details(u)">Update</button> -->
         
       </td>
     </tr>
   </table>
-  <br>
+  <br> 
+<form ><!--*ngFor="let user_details of user_details; let i = index"  -->
+<ng-container *ngIf="show">
+    <div style="margin: 0 auto;text-align: left;">
+        <div>
+            <table border='1' width='100%' style='border-collapse: collapse;'>
+                <tr>
+                  <th></th>
+                  <th>Firstname</th>
+                  <th>Lastname</th>
+                  <th>Address</th>
+                  <th>City</th>
+                  <th>State</th>
+                  <th>Order Total</th>
+                  <th>User Role</th>
+                </tr>
+                <tr *ngFor="let user_details of user_details">
+                  <td><a href="#"><span class="glyphicon glyphicon-user user"></span></a></td>
+                  <!-- <td>{{ user_details.id}}</td> -->
+
+                  <td>{{ user_details.firstname }}</td>
+                  <td>{{ user_details.lastname }}</td>
+                  <td>{{ user_details.address }}</td>
+                  <td>{{ user_details.city }}</td>
+                  <td>{{ user_details.state }}</td>
+                  <td>{{ user_details.order_total }}</td>
+                  <td>{{ user_details.role_name }}</td>
+                </tr></table><br>
+            <!-- <label>Firstname:  {{user_details.id}}</label> -->
+            <!--{{i+1}}  -->
+            <!-- <div><input id="firstname" name="firstname" value="{{ user_details.firstname }}"/></div> -->
+        </div>
+    </div>
+</ng-container>
+</form>
   <!-- user update -->
   <form *ngFor="let user_details of user_details" style="display: none">
       <label>Firstname</label>
