@@ -5,12 +5,7 @@ import { User_details } from '../user_details';
 import { Subscriber } from 'rxjs';
 import { HttpClientModule } from '@angular/common/http';
 import { Routes, Router, RouterModule, ActivatedRoute, ParamMap } from '@angular/router';
-//import {Observable} from 'rxjs/Observable';
-import { switchMap } from 'rxjs/operators';
 
-// import 'rxjs/add/operator/map';
-// import 'rxjs/add/operator/switchMap';
-// import 'rxjs/add/observable/of';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -21,7 +16,7 @@ export class DashboardComponent implements OnInit {
   constructor(private apiService: ApiService, private router: Router) { }
 //define users
 user_details:  User_details[];
-selectedUser_details:  User_details  = { id :  null , firstname:null, lastname:null, address:null, city:null, state:null, order_total:  null,length: null};
+selectedUser_details:  User_details  = { id :  null , firstname:null, lastname:null, address:null, city:null, state:null, order_total:  null, length: null};
   
 public show:boolean = false;
 public viewuser:any = 'View';  
@@ -29,21 +24,12 @@ ngOnInit() {
     
     this.apiService.readUser_details().subscribe((user_details: User_details[])=>{
       this.user_details = user_details;
-      //user details view on id based using switch map -- parammap for route type issue
-      /*this.user_details = this.router.paramMap.pipe(
-        switchMap(params => {
-          const id = +params.get("id")
-          return this.apiService.viewUser_details(id) // http request
-        })
-      )*/
       // user_details.forEach(element => {
-       
       //   element.id = element.id;
       //  // return element;
       //   console.log(element.id,element.firstname);
       // });
-     
-     console.log(user_details);
+      // console.log(user_details);
     })
     
   } 
@@ -58,10 +44,6 @@ ngOnInit() {
     else{
 
       this.apiService.createUser_details(form.value).subscribe((user_details: User_details)=>{
-        //user_details = user_details;
-      //  console.log(user_details.id);
-      //  console.log(user_details.firstname);
-      //  console.log(user_details.order_total);
         console.log("User Details created, ", user_details);
         location.reload(true);
       });
@@ -71,6 +53,7 @@ ngOnInit() {
 
   selectUser_details(user_details: User_details){
     this.selectedUser_details = user_details;
+    //console.log(this.selectedUser_details.id);
   }
 
   deleteUser_details(id){
@@ -82,17 +65,18 @@ ngOnInit() {
   //view user details
   viewUser_details(id){
       this.show = !this.show;
-      console.log(id);
       if(!this.show)  
-      this.apiService.viewUser_details(id).subscribe((user_details: User_details)=>{
+        this.viewuser = "Hide";
+      else
+     // this.router.navigate(['dashboard', id]);
+     this.apiService.viewUser_details(id).subscribe((user_details: User_details)=>{
+     
         this.selectedUser_details = user_details;
-        console.log("User Details , ", user_details);
+        //console.log("User Details , ", user_details);
         this.viewuser = "View";
       //location.reload(true);
     });
-    //this.router.navigate(['dashboard', id]);
-      else
-      this.viewuser = "Hide";
+   
   }
   updateUser_details(id){
     console.log(id);

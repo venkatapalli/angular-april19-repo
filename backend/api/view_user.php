@@ -11,7 +11,7 @@ if(!$id)
 }
 $users = [];
 // view.
-$sql = "SELECT * FROM `users` WHERE `id` ='{$id}' LIMIT 1";
+$sql = "SELECT users.id, users.firstname, users.lastname, users.address, users.city, users.state,users.order_total,roles.role_name  FROM `users` INNER JOIN `roles` ON users.role_id=roles.role_id AND users.id ={$id} LIMIT 1";
 //print_r($sql);
 if($result = mysqli_query($con, $sql))
 {
@@ -25,7 +25,7 @@ if($result = mysqli_query($con, $sql))
       $users[$i]['city'] = $row['city'];
       $users[$i]['state'] = $row['state'];
       $users[$i]['order_total'] = $row['order_total'];
-      //$users[$i]['role_name'] = $row['role_name'];
+      $users[$i]['role_name'] = $row['role_name'];
       $i++;
     }
   
