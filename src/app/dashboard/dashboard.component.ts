@@ -17,6 +17,8 @@ export class DashboardComponent implements OnInit {
 //define users
 user_details:  User_details[];
 selectedUser_details:  User_details  = { id :  null , firstname:null, lastname:null, address:null, city:null, state:null, order_total:  null, length: null};
+
+viewdetails:  User_details  = { id :  null , firstname:null, lastname:null, address:null, city:null, state:null, order_total:  null, length: null};
   
 public show:boolean = false;
 public viewuser:any = 'View';  
@@ -36,24 +38,20 @@ ngOnInit() {
   createOrUpdateUser_details(form){
     if(this.selectedUser_details && this.selectedUser_details.id){
       form.value.id = this.selectedUser_details.id;
+      console.log(form.value);
       this.apiService.updateUser_details(form.value).subscribe((user_details: User_details)=>{
-        console.log("User Details updated" , user_details);
-       // location.reload(true);
-      });
-    }
-    else{
-
-      this.apiService.createUser_details(form.value).subscribe((user_details: User_details)=>{
-        console.log("User Details created, ", user_details);
         location.reload(true);
       });
     }
-
+    else{
+      this.apiService.createUser_details(form.value).subscribe((user_details: User_details)=>{
+        console.log("user details created, ", User_details);
+      });
+    }
   }
 
   selectUser_details(user_details: User_details){
     this.selectedUser_details = user_details;
-    //console.log(this.selectedUser_details.id);
   }
 
   deleteUser_details(id){
@@ -71,18 +69,11 @@ ngOnInit() {
      // this.router.navigate(['dashboard', id]);
      this.apiService.viewUser_details(id).subscribe((user_details: User_details)=>{
      
-        this.selectedUser_details = user_details;
+        this.viewdetails = user_details;
         //console.log("User Details , ", user_details);
         this.viewuser = "View";
       //location.reload(true);
     });
    
-  }
-  updateUser_details(id){
-    console.log(id);
-    this.apiService.updateUser_details(id).subscribe((user_details: User_details)=>{
-      console.log("User Details updated, ", user_details);
-      //location.reload(true);
-    });
   }
 }

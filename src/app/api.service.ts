@@ -33,8 +33,8 @@ export class ApiService {
   //   return this.httpClient.put<User_details>(`${this.PHP_API_SERVER}/api/update.php`, user_details);  
   //   //return this.httpClient.post<User_details>(`${this.PHP_API_SERVER}/api/update.php`, user_details); 
   // }
-  updateUser_details(id: number){
-    return this.httpClient.get<User_details>(`${this.PHP_API_SERVER}/api/update.php/?id=${id}`);  
+  updateUser_details(user_details: User_details){
+    return this.httpClient.put<User_details>(`${this.PHP_API_SERVER}/api/update.php`, user_details);   
   }
     //add the deleteUser_details() to delete policies from the SQL database:
   deleteUser_details(id: number){
