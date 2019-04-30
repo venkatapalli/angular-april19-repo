@@ -16,7 +16,7 @@
     <!-- <td>{{ order_details.order_id}}</td> -->
     <td>{{ order_details.product_name }}</td>
     <td>{{ order_details.order_total }}</td>
-    <td>{{ order_details.firstname }}&nbsp;{{ order_details.lastname }}</td>
+    <td>{{ order_details.firstname }}</td>
     <td>
       <button (click)="deleteOrder_details(order_details.order_id)" class="btn btn-danger">Delete</button>
       </td></tr>
@@ -31,12 +31,10 @@
     <input type="text" name="order_total" [(ngModel)] = "selectedOrder_details.order_total">
     <br>
     <label>Customer Name</label>
-    <!-- <select (change)="selectChangeHandler($event)" >
-        <option name="firstname" [(ngModel)] = "selectedOrder_details.firstname" *ngFor="let order_details of order_details" [ngValue]="selectedOrder_details.firstname">{{order_details.firstname}}</option>
+     <select (change)="selectChangeHandler($event)" >
+        <option name="firstname"  *ngFor="let user_detail of user_details" [(ngModel)] = "user_detail.firstname">{{user_detail.firstname}}</option>
       </select>
-      <p><span>You selected: </span><b>{{firstname}}</b></p> -->
-    <input type="text" name="firstname" [(ngModel)] = "selectedOrder_details.firstname">
-    <p>Note: Only existing customers can create orders,Please input user firstname.</p>
+    <!----<input type="text" name="firstname" [(ngModel)] = "selectedOrder_details.firstname">-->
     <br><br>
     <input type="button" class="submit btn btn-primary" (click)="createOrUpdateOrder_details(f)" value="Add New Order">
   </form>

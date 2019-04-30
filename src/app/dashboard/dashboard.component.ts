@@ -25,13 +25,13 @@ public viewuser:any = 'View';
 ngOnInit() {
     
     this.apiService.readUser_details().subscribe((user_details: User_details[])=>{
-      this.user_details = user_details;
-      // user_details.forEach(element => {
-      //   element.id = element.id;
-      //  // return element;
-      //   console.log(element.id,element.firstname);
-      // });
-      // console.log(user_details);
+    this.user_details = user_details;
+    // user_details.forEach(element => {
+    //   element.id = element.id;
+    //  // return element;
+    //   console.log(element.id,element.firstname);
+    // });
+    // console.log(user_details);
     })
     
   } 
