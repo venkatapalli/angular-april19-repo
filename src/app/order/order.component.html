@@ -36,6 +36,7 @@
       </select>
       <p><span>You selected: </span><b>{{firstname}}</b></p> -->
     <input type="text" name="firstname" [(ngModel)] = "selectedOrder_details.firstname">
+    <p>Note: Only existing customers can create orders,Please input user firstname.</p>
     <br><br>
     <input type="button" class="submit btn btn-primary" (click)="createOrUpdateOrder_details(f)" value="Add New Order">
   </form>
