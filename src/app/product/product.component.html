@@ -1,0 +1,61 @@
+<button (click)="openModal('custom-modal-1')">Add Product</button>
+
+<jw-modal id="custom-modal-1">
+<h2>
+  Add New Product
+</h2>
+<form #f = "ngForm">
+  <label>Product Name:</label>
+  <input type="text" name="productname" [(ngModel)] = "selectedProduct_details.productname">
+  <br>
+  <label>Product Type:</label>
+  <input type="text" name="producttype" [(ngModel)] = "selectedProduct_details.producttype">
+  <br>
+  <input type="button" class="submit btn btn-primary" (click)="createOrUpdateProduct_details(f)" value="Add Product">
+</form>
+</jw-modal>
+<jw-modal id="custom-modal-2">
+<h2>
+  Edit Product
+</h2>
+<form #f = "ngForm">
+  <label>Product Name:</label>
+  <input type="text" name="productname" [(ngModel)] = "selectedProduct_details.productname">
+  <br>
+  <label>Product Type:</label>
+  <input type="text" name="producttype" [(ngModel)] = "selectedProduct_details.producttype">
+  <br>
+  <input type="button" class="submit btn btn-primary" (click)="createOrUpdateProduct_details(f)" value="Update Product">
+</form>
+</jw-modal>
+<h1>
+  Products
+</h1>
+<table border='1' width='100%' style='border-collapse: collapse;'>
+  <tr>
+    <th>Product Name</th>
+    <th>Product Type</th>
+    <th>Action</th>
+  </tr>
+  <tr *ngFor="let product_details of product_details">
+    <td>{{ product_details.productname }}</td>
+    <td>{{ product_details.producttype }}</td>
+    <td>
+      <button (click)="deleteProduct_details(product_details.id)" class="btn btn-danger">Delete</button>
+      <button (click)="viewProduct_details(product_details.id)" class="glyphicon glyphicon-eye-open ">{{viewuser}}</button>
+       <button (click)="selectProduct_details(product_details,'custom-modal-2')">Edit</button>  
+    </td>
+  </tr>
+</table>
+<jw-modal id="custom-modal-3">
+<form  *ngFor="let viewproductdetail of viewproductdetails">
+  <ng-container *ngIf="show">
+      <div style="margin: 0 auto;text-align: left;">
+          <div>
+              <h3><span class="glyphicon glyphicon-user"></span>&nbsp;Product Details</h3><br>
+              <label>Product Name: </label> &nbsp;{{ viewproductdetail.productname }}<br>
+              <label>Lastname:  </label> &nbsp;{{ viewproductdetail.producttype }}<br>
+          </div>
+      </div>
+  </ng-container></form>
+</jw-modal>

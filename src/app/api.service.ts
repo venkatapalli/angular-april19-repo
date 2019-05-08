@@ -6,6 +6,7 @@ import { User_details } from  './user_details';
 //define order details
 import { Order_details } from  './order_details';
 import { OrderComponent } from './order/order.component';
+import { Product_details } from './product_details';
 //define user roles
 import { User_roles } from './user_roles';
 
@@ -96,5 +97,24 @@ export class ApiService {
   user_detailsLogin(user_details: User_details): Observable<User_details>{
     return this.httpClient.post<User_details>(`${this.PHP_API_SERVER}/api/login.php`, user_details);
   }
+
+//StartProducts 
+    readProduct_details(): Observable<Product_details[]>{
+      return this.httpClient.get<Product_details[]>(`${this.PHP_API_SERVER}/api/product_read.php`);
+    }
+     createProduct_details(product_details: Product_details): Observable<Product_details>{
+       //console.log(product_details);
+      return this.httpClient.post<Product_details>(`${this.PHP_API_SERVER}/api/product_create.php`, product_details);
+    }
+    updateProduct_details(product_details: Product_details){
+      return this.httpClient.put<Product_details>(`${this.PHP_API_SERVER}/api/product_update.php`, product_details);   
+    }
+    deleteProduct_details(id: number){
+      return this.httpClient.delete<Product_details>(`${this.PHP_API_SERVER}/api/product_delete.php/?id=${id}`);
+    }
+    viewProduct_details(id: number){
+      return this.httpClient.get<Product_details>(`${this.PHP_API_SERVER}/api/product_view.php/?id=${id}`);
+    }
+  //EndProducts
 
 }
