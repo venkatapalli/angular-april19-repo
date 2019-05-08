@@ -1,6 +1,4 @@
 import { Component, OnInit, Inject  } from '@angular/core';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
-import { DialogData } from '../DialogData';
 import { ModalService } from '../_services';
 import{ ApiService } from '../api.service';
 import { User_details } from '../user_details';

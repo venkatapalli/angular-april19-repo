@@ -5,6 +5,7 @@ import { User_details } from '../user_details';
 import { Subscriber } from 'rxjs';
 import { HttpClientModule } from '@angular/common/http';
 import { Routes, Router, RouterModule, ActivatedRoute, ParamMap } from '@angular/router';
+import { ModalService } from '../_services';
 
 @Component({
   selector: 'app-dashboard',
@@ -13,7 +14,7 @@ import { Routes, Router, RouterModule, ActivatedRoute, ParamMap } from '@angular
 })
 export class DashboardComponent implements OnInit {
 //import APIService
-  constructor(private apiService: ApiService, private router: Router) { }
+  constructor(private modalService: ModalService,private apiService: ApiService, private router: Router) { }
 //define users
 user_details:  User_details[];
 selectedUser_details:  User_details  = { id :  null , firstname:null, lastname:null, address:null, city:null, state:null, order_total:  null, length: null};
@@ -40,7 +41,7 @@ ngOnInit() {
       form.value.id = this.selectedUser_details.id;
       console.log(form.value);
       this.apiService.updateUser_details(form.value).subscribe((user_details: User_details)=>{
-        location.reload(true);
+        //location.reload(true);
       });
     }
     else{
@@ -48,9 +49,11 @@ ngOnInit() {
         console.log("user details created, ", User_details);
       });
     }
+    this.modalService.close('add_user');
   }
 
-  selectUser_details(user_details: User_details){
+  selectUser_details(user_details: User_details,id){
+    this.modalService.open(id);
     this.selectedUser_details = user_details;
   }
 
@@ -66,7 +69,7 @@ ngOnInit() {
       if(!this.show)  
         this.viewuser = "Hide";
       else
-     // this.router.navigate(['dashboard', id]);
+      this.modalService.open('view_user');
      this.apiService.viewUser_details(id).subscribe((user_details: User_details)=>{
      
         this.viewdetails = user_details;
@@ -75,5 +78,8 @@ ngOnInit() {
       //location.reload(true);
     });
    
+  }
+  openModal(id: string) {
+    this.modalService.open(id);
   }
 }
