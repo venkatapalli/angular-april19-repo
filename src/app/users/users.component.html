@@ -1,0 +1,59 @@
+<h3><span class="glyphicon glyphicon-user"></span>&nbsp;Users</h3><br>
+<button (click)="openModal('add_user')">Add New User</button>
+<jw-modal id="add_user">
+  <form #f = "ngForm">
+      <input type="hidden" name="id" [(ngModel)] = "selectedUser_details.id">
+    <div class='form-group'>
+        <div class="col-md-2">
+          <label>User Name</label></div>
+          <input type="text" name="username" [(ngModel)] = "selectedUser_details.username">
+        </div>
+      <div class='form-group'>
+        <div class="col-md-2">
+          <label>Password</label></div>
+          <input type="password" name="password" [(ngModel)] = "selectedUser_details.password">
+        </div>
+      <div class='form-group'>
+        <div class="col-md-2">
+          <input type="button" class="btn btn-primary" (click)="closeModal('add_user')" value="Cancel"> 
+        </div>
+        <div class="col-md-1"></div>
+      <input type="button" class="submit btn btn-primary" (click)="create_newUser(f)" value="Save">
+    </div>
+  </form>
+</jw-modal>
+<table border='1' width='100%' style='border-collapse: collapse;'>
+    <tr>
+      <th></th>
+      <th>User Name</th>
+      <th>Password</th>
+      <th>Action</th>
+    </tr>
+    <tr *ngFor="let user_new of user_new">
+      <td><a href="#"><span class="glyphicon glyphicon-user user"></span></a></td>
+      <!-- <td>{{ user_details.id}}</td> -->
+      <td>{{ user_new.username }}</td>
+      <td>{{ user_new.password }}</td>
+      <td>
+        <button (click)="selectUser_details(user_new,'add_user')">Edit</button>
+        <button class="btn-danger" (click)="delete_alert(user_new,'delete_user')">Delete</button>
+      </td>
+    </tr>
+  </table>
+  <jw-modal id="delete_user">
+      <form #f = "ngForm">
+          <input type="hidden" name="id" [(ngModel)] = "selectedUser_details.id">
+          <input type="hidden" name="username" [(ngModel)] = "selectedUser_details.username">
+          <input type="hidden" name="password" [(ngModel)] = "selectedUser_details.password">
+        <div class='form-group'>
+          Are you sure You want to delete this user : {{ selectedUser_details.username }}   
+        </div>
+        <div class='form-group'>
+          <div class="col-md-2">
+            <input type="button" class="btn btn-primary" (click)="closeModal('delete_user')" value="Cancel">
+          </div>
+          <div class="col-md-1"></div>
+          <input type="button" class="submit btn btn-danger" (click)="delete_newuser(selectedUser_details.id)" value="Yes">
+        </div>
+      </form>
+    </jw-modal>

@@ -9,7 +9,7 @@ import { OrderComponent } from './order/order.component';
 import { Product_details } from './product_details';
 //define user roles
 import { User_roles } from './user_roles';
-
+import { Users_new } from './users_new';
 import { Observable } from  'rxjs';
 @Injectable({
   providedIn: 'root'
@@ -117,4 +117,17 @@ export class ApiService {
     }
   //EndProducts
 
+  //Users_new 
+  createUsers_new(Users_new: Users_new): Observable<Users_new>{
+    return this.httpClient.post<Users_new>(`${this.PHP_API_SERVER}/api/users/create.php`, Users_new);
+  }
+  newUser_details():Observable<Users_new[]>{
+    return this.httpClient.get<Users_new[]>(`${this.PHP_API_SERVER}/api/users/read.php`);
+  }
+  updatenewUser_details(Users_new: Users_new) {
+    return this.httpClient.put<Users_new>(`${this.PHP_API_SERVER}/api/users/update.php`, Users_new);
+  }
+  delete_newuser(id:number){
+    return this.httpClient.delete<Users_new>(`${this.PHP_API_SERVER}/api/users/delete.php/?id=${id}`);
+  }
 }

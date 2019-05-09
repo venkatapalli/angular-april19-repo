@@ -16,7 +16,8 @@ import { RoleComponent } from './role/role.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ModalComponent } from './_components';
 import { ModalModule, BsModalService } from 'ngx-bootstrap/modal';
-import { ProductComponent } from './product/product.component'
+import { ProductComponent } from './product/product.component';
+import { UsersComponent } from './users/users.component'
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,7 +31,8 @@ import { ProductComponent } from './product/product.component'
     RegisterComponent,
     RoleComponent,
     ProductComponent,
-    ModalComponent
+    ModalComponent,
+    UsersComponent
   ],
   imports: [
     BrowserModule,
