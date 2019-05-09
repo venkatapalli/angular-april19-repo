@@ -4,7 +4,7 @@
 <br>
 <h3><span class="glyphicon glyphicon-user"></span>&nbsp;Customers</h3><br>
 <div>
-
+<button (click)="selectUser_details(user_details,'add_user')">Add New User</button>
   <table border='1' width='100%' style='border-collapse: collapse;'>
     <tr>
       <th></th>
@@ -39,7 +39,7 @@
     </tr>
   </table>
   <br>
-  <button (click)="openModal('add_user')">Add New User</button>
+  
   <jw-modal id="add_user">
   <form #f = "ngForm">
     <div class='form-group'>
